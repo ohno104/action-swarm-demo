@@ -44,8 +44,8 @@ jobs:
 
     - name: Push to GHCR
       run: |
-        docker push ghcr.io/ohno104/action-demo:latest
-        docker push ghcr.io/ohno104/action-demo:${{ steps.get_version.outputs.VERSION }}
+        docker push ghcr.io/ohno104/action-swarm-demo:latest
+        docker push ghcr.io/ohno104/action-swarm-demo:${{ steps.get_version.outputs.VERSION }}
 
     - name: github script
       uses: actions/github-script@v6
