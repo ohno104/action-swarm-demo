@@ -1,0 +1,20 @@
+version: "3.7"
+
+services: 
+  swarm-server:
+    build: 
+      context: .
+      dockerfile: demo.Dockerfile
+    container_name: swarm-server
+    deploy:
+      replicas: 4
+      restart_policy:
+        condition: on-failure
+      mode: global
+      placement:
+        constraints:
+          - node.labels.service == server
+    ports:
+      - "8765:8765"
+    expose:
+      - "8765"

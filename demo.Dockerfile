@@ -3,4 +3,4 @@ COPY . /app/
 
 EXPOSE 8765
 WORKDIR /app
-ENTRYPOINT ["./action-demo"]
+ENTRYPOINT ["./swarm-server"]

@@ -1,4 +1,4 @@
-module github.com/ohno104/action-demo
+module github.com/ohno104/action-swarm-demo
 
 go 1.18
 
