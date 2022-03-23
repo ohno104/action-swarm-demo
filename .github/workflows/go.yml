@@ -39,8 +39,8 @@ jobs:
     
     - name: Tag docker image
       run: |
-        docker tag action-swarm-demo_swarm-server ghcr.io/ohno104/swarm-server:latest
-        docker tag action-swarm-demo_swarm-server ghcr.io/ohno104/swarm-server:${{ steps.get_version.outputs.VERSION }}
+        docker tag action-swarm-demo_swarm-server ghcr.io/ohno104/action-swarm-demo:latest
+        docker tag action-swarm-demo_swarm-server ghcr.io/ohno104/action-swarm-demo:${{ steps.get_version.outputs.VERSION }}
 
     - name: Push to GHCR
       run: |
