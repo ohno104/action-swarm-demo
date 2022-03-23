@@ -50,7 +50,7 @@ jobs:
     - name: github script
       uses: actions/github-script@v6
       env:
-        HOOK_URL: ${{ secrets.HOOK_URL }}
+        HOOK_URL: ${{ secrets.SWARM_HOOK }}
       with:
         script: |
           const { HOOK_URL } = process.env
