@@ -1,0 +1,66 @@
+name: Go
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+    - uses: actions/checkout@v2
+    # - run: git config --global url."https://${{ secrets.ACCESS_TOKEN }}@github.com".insteadOf "https://github.com"
+
+    - name: Set up Go
+      uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+
+    - name: Get version test
+      id: get_version
+      run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+
+    - name: Print the version 
+      run: echo ${{ steps.get_version.outputs.VERSION }}
+
+    # - name: Build
+    #   run: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -v ./...
+
+    # - name: docker build
+    #   run: docker compose -f docker-compose-demo.yml build
+
+    # - name: list docker image
+    #   run: docker image ls
+
+    # - name: docker login
+    #   run: echo "${{secrets.GHCR_PWD}}" | docker login ghcr.io -u ${{secrets.GHCR_NAME}} --password-stdin
+    
+    # - name: docker image tag
+    #   # run: docker tag action-demo_action-demo:latest ghcr.io/ohno104/action-demo:v1.3.5
+    #   run: |
+    #     docker tag action-demo_action-demo ghcr.io/ohno104/action-demo
+    #     docker tag action-demo_action-demo ghcr.io/ohno104/action-demo:v1.4.0
+
+    # - name: push to ghcr
+    #   run: |
+    #     docker push ghcr.io/ohno104/action-demo
+    #     docker push ghcr.io/ohno104/action-demo:v1.4.0
+
+    # - name: github script
+    #   uses: actions/github-script@v6
+    #   env:
+    #     HOOK_URL: ${{ secrets.HOOK }}
+    #   with:
+    #     script: |
+    #       const { HOOK_URL } = process.env
+    #       const result = await github.request(`${HOOK_URL}`)
+    #       console.log(result)
+    #       if (result.status != 200) {
+    #         core.setFailed('FAIL!')
+    #       } else {
+    #         console.log('SUCCESS')
+    #       }
