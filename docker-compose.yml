@@ -5,12 +5,12 @@ services:
     build: 
       context: .
       dockerfile: demo.Dockerfile
-    container_name: swarm-server
+    #container_name: swarm-server
     deploy:
-      replicas: 4
-      # restart_policy:
-      #   condition: on-failure
-      # mode: global
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+      mode: global
       placement:
         constraints:
           - node.labels.service == server
