@@ -8,9 +8,9 @@ services:
     container_name: swarm-server
     deploy:
       replicas: 4
-      restart_policy:
-        condition: on-failure
-      mode: global
+      # restart_policy:
+      #   condition: on-failure
+      # mode: global
       placement:
         constraints:
           - node.labels.service == server
