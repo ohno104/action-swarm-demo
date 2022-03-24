@@ -7,7 +7,7 @@ services:
       dockerfile: demo.Dockerfile
     #container_name: swarm-server
     deploy:
-      replicas: 1
+      replicas: 4
       restart_policy:
         condition: on-failure
       mode: global
