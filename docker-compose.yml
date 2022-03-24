@@ -7,14 +7,14 @@ services:
       dockerfile: demo.Dockerfile
     #container_name: swarm-server
     deploy:
-      replicas: 4
+      replicas: 6
       restart_policy:
         condition: on-failure
-      mode: global
-      placement:
-        constraints:
-          - node.labels.service == server
+      # mode: global
+      # placement:
+      #   constraints:
+      #     - node.labels.service == server
     ports:
-      - "8765:8765"
+      - "8800:8800"
     expose:
-      - "8765"
+      - "8800"

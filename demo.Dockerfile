@@ -1,6 +1,6 @@
 FROM alpine
 COPY . /app/
 
-EXPOSE 8765
+EXPOSE 8800
 WORKDIR /app
 ENTRYPOINT ["./swarm-server"]
